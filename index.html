@@ -883,14 +883,22 @@
     
     window.addEventListener('scroll', () => {
       let current = '';
+      const scrollPosition = window.scrollY + 150; // Increased offset for better detection
       
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 100)) {
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           current = section.getAttribute('id');
         }
       });
+      
+      // Special handling for the last section (contact)
+      const lastSection = sections[sections.length - 1];
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        current = lastSection.getAttribute('id');
+      }
     
       navLinks.forEach(link => {
         link.classList.remove('active');
