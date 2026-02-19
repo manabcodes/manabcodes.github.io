@@ -291,13 +291,22 @@
       <h2 class="mb-4 text-center">Moments</h2>
       <div class="row g-3">
         <div class="col-md-4 col-sm-6">
-          <img src="img/moments/11.jpg" alt="CIDH-Coimbra" class="img-fluid rounded shadow-sm" style="width: 100%; height: 250px; object-fit: cover;">
+          <div class="moments-card">
+            <img src="img/moments/11.jpg" alt="CIDH-Coimbra" class="img-fluid rounded shadow-sm" style="width: 100%; height: 250px; object-fit: cover;">
+            <p class="moments-caption">X International Congress on Human Rights at University of Coimbra, Portugal, October 2025</p>
+          </div>
         </div>
         <div class="col-md-4 col-sm-6">
-          <img src="img/moments/12.jpg" alt="JURIX-Turin" class="img-fluid rounded shadow-sm" style="width: 100%; height: 250px; object-fit: cover;">
-        </div> 
+          <div class="moments-card">
+            <img src="img/moments/12.jpg" alt="JURIX-Turin" class="img-fluid rounded shadow-sm" style="width: 100%; height: 250px; object-fit: cover;">
+            <p class="moments-caption">XXXVIII International Conference on Legal Knowledge and Information Systems (JURIX), Turin, Italy, December 2025</p>
+          </div> 
+        </div>
         <div class="col-md-4 col-sm-6">
-          <img src="img/moments/13.jpg" alt="VIUWinterSchool-Venice" class="img-fluid rounded shadow-sm" style="width: 100%; height: 250px; object-fit: cover;">
+          <div class="moments-card">
+            <img src="img/moments/13.jpg" alt="VIUWinterSchool-Venice" class="img-fluid rounded shadow-sm" style="width: 100%; height: 250px; object-fit: cover;">
+            <p class="moments-caption">I VIU Winter School Digital Rights: Theory and Practice, San Servolo, Venice, Italy, January 2026</p>
+          </div>
         </div>
         <!-- Add more images here as col-md-4 col-sm-6 divs -->
       </div>
@@ -314,6 +323,26 @@
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   }
+  .moments-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.moments-card img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.moments-caption {
+  font-size: 0.82rem;
+  color: #6c757d;
+  margin-top: 6px;
+  margin-bottom: 0;
+  font-style: italic;
+}
   </style>
 
 <!-- Experience -->
