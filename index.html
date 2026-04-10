@@ -851,6 +851,13 @@
   color: white;
   pointer-events: none;
 }
+#media ul {
+  list-style: none;
+  padding-left: 0;
+}
+#media li{
+  padding-bottom: 0.5rem;
+}
 </style>
 
 <div class="media-item mb-4 p-4 border rounded bg-white">
@@ -907,9 +914,14 @@
 -->
 
 <div class="media-press">
-  <h4>In the Press</h4>
-  <ul class="press-list">
-
+<h4>In the Press 
+  <button class="btn btn-outline-secondary btn-sm" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#press-content"
+          onclick="this.textContent = this.textContent === '+' ? '−' : '+'">+</button>
+</h4>
+<div class="collapse" id="press-content">
+<ul>
     <li>
       <a href="https://www.thedailystar.net/rising-stars/news/social-media-ban-young-users-what-would-it-look-the-context-bangladesh-4144966" target="_blank">
         "Social media ban for young users: What would it look like in the context of Bangladesh?"</a>, <em>The Daily Star</em> &bull; April 2026
@@ -1050,7 +1062,7 @@
     </li>
 
   </ul>
-
+</div>
   <h4>Pledges &amp; Declarations</h4>
   <ul class="press-list">
 
@@ -1197,6 +1209,10 @@
         <div class="d-flex flex-wrap gap-2 mb-4">
           <a href="https://lekhaporabd.net/archives/28741" target="_blank" class="btn btn-outline-primary btn-sm">LekhaporaBD, March 16, 2019</a>
           <a href="https://www.prothomalo.com/bangladesh/%E0%A6%85%E0%A6%A8%E0%A6%B6%E0%A6%A8-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A4-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80" target="_blank" class="btn btn-outline-primary btn-sm">Prothom Alo, March 16, 2019</a>
+          
+          <div class="collapse" id="angry-years-press">
+          <div class="d-flex flex-wrap gap-2">
+
           <a href="https://www.thedailystar.net/frontpage/ducsu-election-2019-3-more-fall-ill-hunger-strike-demanding-re-election-1715812" target="_blank" class="btn btn-outline-primary btn-sm">The Daily Star, March 15, 2019</a>
           <a href="https://www.jugantor.com/tp-firstpage/155378" target="_blank" class="btn btn-outline-primary btn-sm">Jugantor, March 15, 2019</a>
           <a href="https://www.jagonews24.com/campus/news/487541" target="_blank" class="btn btn-outline-primary btn-sm">JagoNews24, March 15, 2019</a>
@@ -1211,7 +1227,13 @@
           <a href="https://www.ntvbd.com/education/205259/%E0%A6%A2%E0%A6%BE%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A7%9F-%E0%A6%A6%E0%A6%AB%E0%A6%BE-%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%AA%E0%A7%80%E0%A7%9C%E0%A6%A8%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%80-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%B0%E0%A6%BE?amp" target="_blank" class="btn btn-outline-primary btn-sm">NTV Bangladesh, July 11, 2018</a>
           <a href=https://www.jugantor.com/tp-city/57248" target="_blank" class="btn btn-outline-primary btn-sm">Jugantor, June 6, 2018</a>
 
+          </div>
+          </div>
 
+          <button class="btn btn-outline-secondary btn-sm" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#angry-years-press"
+          onclick="this.textContent = this.textContent === '+' ? '−' : '+'">+</button>
         </div>
 
  <p>We didn't win. Nobody outside Hasina's party was supposed to. The two outsiders who did win, <a href="https://en.wikipedia.org/wiki/Nurul_Haque_Nur" target="_blank">Nur</a> and <a href="https://en.wikipedia.org/wiki/Akhter_Hossain_(politician)" target="_blank">Akhter</a>, negotiated their way in, then shed layers of skins and scales like all good reptiles, and in 2026, ended up in parliament. The results were predetermined, the process a theatre of participation without the substance of it. Four progressives went on hunger strike at the Raju Sculpture demanding fresh elections. I joined on day two. By day five I was in the hospital. (Kids, start working out if you want your hunger strikes to roll into double digits.)</p>
