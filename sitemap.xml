@@ -2,27 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://manabcodes.github.io/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-06-05</lastmod>
   </url>
   <url>
     <loc>https://manabcodes.github.io/CV.pdf</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-06-05</lastmod>
   </url>
   <url>
     <loc>https://manabcodes.github.io/appearances/china-privacy.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-05</lastmod>
   </url>
   <url>
     <loc>https://manabcodes.github.io/appearances/awami-league-dead.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-05</lastmod>
   </url>
   <url>
-    <loc>https://manabcodes.github.io/appearances/bnp-heading-where.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://manabcodes.github.io/appearances/bnp-heading.html</loc>
+    <lastmod>2026-06-05</lastmod>
   </url>
 </urlset>
