@@ -1,0 +1,44 @@
+diff --git a/index.html b/index.html
+index 263b5b9..d88f90f 100644
+--- a/index.html
++++ b/index.html
+@@ -1329,7 +1329,7 @@ h1, h2, h3, h4, h5, h6 {
+ 
+         <p>Before I forget about them, the sabbatical political years were the best, the craziest, the angriest years of my life. I spent two years (2017-2019) organizing with a big tent progressive left student organization at the University of Dhaka, back when the entire country was suffocating under Sheikh Hasina's Awami League. Free elections had become a punchline in underground stand up comedy shows, and then the police would show up on Pegasus to end the set.</p>
+ 
+-        <p>Those were the years of <a href="https://www.himalmag.com/politics/movement-against-rampal-power-plant-bangladesh-sundarban-sheikh-hasina-awami-league" target="_blank">Rampal</a>, <a href="https://www.thedailystar.net/news/bangladesh/news/look-back-2018-quota-protests-and-toriquls-tale-3655141" target="_blank">quota reform</a>, and <a href="https://www.tbsnews.net/features/panorama/how-2018-road-safety-movement-gave-birth-2024-july-revolution-928066" target="_blank">road safety</a>, three movements that gradually put the left and the right on the same streets, all of them crushed with the same batons. The pressure had to go somewhere. It went into demanding elections. The Dhaka University Central Students' Union (DUCSU) held its first vote in 28 years in March 2019, a body grand enough to be called Bangladesh's second parliament and corrupt enough to have earned that title too, its dormitories carved up between party factions and stocked with weapons, its history running through the 1952 Language Movement, the 1971 Liberation War, and every ruling party's stranglehold on campus since. I ran as candidate for International Affairs Secretary on the Progressive Students Coalition slate, a position that hadn't existed before and that I pushed to create. I ran from a place of hope, because students' rights don't advocate for themselves.</p>
++        <p>Those were the years of <a href="https://www.himalmag.com/politics/movement-against-rampal-power-plant-bangladesh-sundarban-sheikh-hasina-awami-league" target="_blank">Rampal</a>, <a href="https://www.thedailystar.net/news/bangladesh/news/look-back-2018-quota-protests-and-toriquls-tale-3655141" target="_blank">quota reform</a>, and <a href="https://www.tbsnews.net/features/panorama/how-2018-road-safety-movement-gave-birth-2024-july-revolution-928066" target="_blank">road safety</a>, three movements that gradually put the left and the right on the same streets, our little attempts to prove <i>that we're human beings, and that we're actually alive</i>, all of them crushed with the same batons. The pressure had to go somewhere. It went into demanding elections. The Dhaka University Central Students' Union (DUCSU) held its first vote in 28 years in March 2019, a body grand enough to be called Bangladesh's second parliament and corrupt enough to have earned that title too, its dormitories carved up between party factions and stocked with weapons, its history running through the 1952 Language Movement, the 1971 Liberation War, and every ruling party's stranglehold on campus since. I ran as candidate for International Affairs Secretary on the Progressive Students Coalition slate, a position that hadn't existed before and that I pushed to create. I ran from a place of hope, because students' rights (actually, <i>any</i> rights) don't advocate for themselves.</p>
+ 
+ <!-- Photo Gallery -->
+ <div class="row g-3 my-4 align-items-start">
+@@ -1451,7 +1451,7 @@ h1, h2, h3, h4, h5, h6 {
+ 
+         <p>The convergence we built in those days kept going for eight years, a lavender marriage between the two poles of a political spectrum held together by a shared rage against the same regime. It was what made July 2024 possible, when the dictatorship finally fell. What followed was a quick divorce between the left and the right, with the extreme right now posing as a democratic opposition as proof.</p>
+ 
+-        <p>All <i>sábados</i> end. And so ended my sabbatical. The hunger strike was the last straw. I was tired of being an activist. I wanted to be me, without people projecting their inner angry young man onto me 24/7, and then taking their pity on my madness. So I entered academia, because as the great Paolo Freire had once said, <b><i>o educador tem o dever de não ser neutro — an educator has the duty of not being neutral</i></b>. And I was many things, but I was never neutral. This is where you can still find me, in academia's darkest corridors, one hand with a chalk, one hand clenched in rage against capitalism, rage against patriarchy, rage against the gender divide, rage against autocrats, rage against the machine.</p>
++        <p>All <i>sábados</i> end. And so ended my sabbatical. The hunger strike was the last straw. I was tired of being an activist. I wanted to be me, without people projecting their inner angry young man onto me 24/7, and then taking their pity on my madness. So I entered academia, because as the great Paolo Freire had once said, <i>o educador tem o dever de não ser neutro — an educator has the duty of not being neutral</i>. And I was many things, but I was never neutral. This is where you can still find me, in academia's darkest corridors, one hand with a chalk, one hand clenched in rage against capitalism, rage against patriarchy, rage against the gender divide, rage against autocrats, rage against the machine.</p>
+ 
+       </div>
+     </div>
+@@ -2020,6 +2020,21 @@ h1, h2, h3, h4, h5, h6 {
+         }
+       }
+     },
++    {
++      "@type": "Quotation",
++      "text": "Why don't we have a little game? Let's pretend that we're human beings, and that we're actually alive.",
++      "author": {
++        "@type": "Person",
++        "name": "John Osborne",
++        "birthDate": "1929",
++        "deathDate": "1994"
++      },
++      "isPartOf": {
++        "@type": "Play",
++        "name": "Look Back in Anger",
++        "datePublished": "1956"
++      }
++    },
+     {
+       "@type": "Quotation",
+       "text": "o educador tem o dever de não ser neutro",
