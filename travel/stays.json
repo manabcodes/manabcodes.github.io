@@ -1,0 +1,376 @@
+{
+ "funders": {
+  "self": {
+   "label": "Self-paid",
+   "light": "#bd1f36",
+   "dark": "#d2404a"
+  },
+  "external": {
+   "label": "Paid by external bodies",
+   "light": "#2f6fde",
+   "dark": "#4b88f0"
+  },
+  "harness": {
+   "label": "Paid by HARNESS",
+   "light": "#45c08a",
+   "dark": "#2cae72"
+  }
+ },
+ "ring": {
+  "light": "#ffffff",
+  "dark": "#14181e"
+ },
+ "meta": {
+  "stays": 16,
+  "places": 15,
+  "countries": 10,
+  "counts": {
+   "self": 3,
+   "external": 6,
+   "harness": 7
+  },
+  "square": 15,
+  "circle_key": [
+   {
+    "months": 2.5,
+    "d": 25.3
+   },
+   {
+    "months": 6,
+    "d": 39.2
+   },
+   {
+    "months": 12,
+    "d": 55.4
+   }
+  ]
+ },
+ "stays": [
+  {
+   "id": "madrid",
+   "place": "Madrid",
+   "country": "Spain",
+   "lat": 40.4168,
+   "lon": -3.7038,
+   "kind": "long",
+   "months": 12,
+   "funder": "harness",
+   "status": "past",
+   "when": "2025 to present",
+   "what": "PhD base, Ontology Engineering Group, Universidad Politécnica de Madrid",
+   "funder_note": "HARNESS Doctoral Network (Marie Skłodowska-Curie)",
+   "zoom": 450000,
+   "label": "r",
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2263%22%20height%3D%2263%22%20viewBox%3D%220%200%2063%2063%22%3E%3Ccircle%20cx%3D%2231.7%22%20cy%3D%2231.7%22%20r%3D%2227.7%22%20fill%3D%22%2345c08a%22%20fill-opacity%3D%220.82%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2263%22%20height%3D%2263%22%20viewBox%3D%220%200%2063%2063%22%3E%3Ccircle%20cx%3D%2231.7%22%20cy%3D%2231.7%22%20r%3D%2227.7%22%20fill%3D%22%232cae72%22%20fill-opacity%3D%220.82%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 63,
+   "funder_label": "Paid by HARNESS"
+  },
+  {
+   "id": "ghent",
+   "place": "Ghent",
+   "country": "Belgium",
+   "lat": 51.0543,
+   "lon": 3.7174,
+   "kind": "long",
+   "months": 2.5,
+   "funder": "external",
+   "status": "past",
+   "when": "Summer 2026",
+   "what": "Visiting researcher, KNoWS, IDLab, Ghent University and imec",
+   "funder_note": "Short-Term Scientific Mission grant, GOBLIN COST Action (CA23147)",
+   "zoom": 450000,
+   "label": "r",
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2233%22%20height%3D%2233%22%20viewBox%3D%220%200%2033%2033%22%3E%3Ccircle%20cx%3D%2216.6%22%20cy%3D%2216.6%22%20r%3D%2212.6%22%20fill%3D%22%232f6fde%22%20fill-opacity%3D%220.82%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2233%22%20height%3D%2233%22%20viewBox%3D%220%200%2033%2033%22%3E%3Ccircle%20cx%3D%2216.6%22%20cy%3D%2216.6%22%20r%3D%2212.6%22%20fill%3D%22%234b88f0%22%20fill-opacity%3D%220.82%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 33,
+   "funder_label": "Paid by external bodies"
+  },
+  {
+   "id": "bologna",
+   "place": "Bologna",
+   "country": "Italy",
+   "lat": 44.4949,
+   "lon": 11.3426,
+   "kind": "long",
+   "months": 6,
+   "funder": "harness",
+   "status": "planned",
+   "when": "Nov 2026 to Apr 2027",
+   "what": "Secondment, Alma Mater Studiorum, Università di Bologna",
+   "funder_note": "HARNESS Doctoral Network",
+   "zoom": 450000,
+   "label": "r",
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2247%22%20height%3D%2247%22%20viewBox%3D%220%200%2047%2047%22%3E%3Ccircle%20cx%3D%2223.6%22%20cy%3D%2223.6%22%20r%3D%2219.6%22%20fill%3D%22%2345c08a%22%20fill-opacity%3D%220.22%22%20stroke%3D%22%2345c08a%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%226%204%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2247%22%20height%3D%2247%22%20viewBox%3D%220%200%2047%2047%22%3E%3Ccircle%20cx%3D%2223.6%22%20cy%3D%2223.6%22%20r%3D%2219.6%22%20fill%3D%22%232cae72%22%20fill-opacity%3D%220.22%22%20stroke%3D%22%232cae72%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%226%204%22/%3E%3C/svg%3E"
+   },
+   "size": 47,
+   "funder_label": "Paid by HARNESS"
+  },
+  {
+   "id": "coimbra",
+   "place": "Coimbra",
+   "country": "Portugal",
+   "lat": 40.2033,
+   "lon": -8.4103,
+   "kind": "short",
+   "funder": "self",
+   "status": "past",
+   "when": "Oct 2025",
+   "what": "Congresso Internacional de Direitos Humanos de Coimbra (talk: Siliconwashing)",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%23bd1f36%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%23d2404a%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Self-paid"
+  },
+  {
+   "id": "turin",
+   "place": "Turin",
+   "country": "Italy",
+   "lat": 45.0703,
+   "lon": 7.6869,
+   "kind": "short",
+   "funder": "harness",
+   "status": "past",
+   "when": "Dec 2025",
+   "what": "JURIX 2025: Doctoral Consortium, AI4Legs-V and CLAIRvoyantS",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%2345c08a%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232cae72%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by HARNESS"
+  },
+  {
+   "id": "cercedilla",
+   "place": "Cercedilla",
+   "country": "Spain",
+   "lat": 40.7433,
+   "lon": -4.0597,
+   "kind": "short",
+   "funder": "harness",
+   "status": "past",
+   "when": "Dec 2025",
+   "what": "1st HARNESS Network Training Workshop",
+   "zoom": 250000,
+   "label_max": 900000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%2345c08a%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232cae72%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by HARNESS"
+  },
+  {
+   "id": "venice1",
+   "place": "Venice",
+   "country": "Italy",
+   "lat": 45.4408,
+   "lon": 12.3155,
+   "slot": -1,
+   "kind": "short",
+   "funder": "self",
+   "status": "past",
+   "when": "Jan 2026",
+   "what": "Winter School on Digital Rights, Venice International University, San Servolo",
+   "zoom": 350000,
+   "group_label": "Venice (2 visits)",
+   "label": "u",
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%23bd1f36%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%23d2404a%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Self-paid"
+  },
+  {
+   "id": "venice2",
+   "place": "Venice",
+   "country": "Italy",
+   "lat": 45.4408,
+   "lon": 12.3155,
+   "slot": 1,
+   "kind": "short",
+   "funder": "harness",
+   "status": "past",
+   "when": "Apr 2026",
+   "what": "Privacy Symposium (DPLICIT)",
+   "zoom": 350000,
+   "label": null,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%2345c08a%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232cae72%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by HARNESS"
+  },
+  {
+   "id": "mexico-city",
+   "place": "Mexico City",
+   "country": "Mexico",
+   "lat": 19.4326,
+   "lon": -99.1332,
+   "kind": "short",
+   "funder": "self",
+   "status": "past",
+   "when": "May 2026",
+   "what": "MILA, IVADO and CINVESTAV Summer School in Responsible AI and Human Rights",
+   "zoom": 900000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%23bd1f36%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%23d2404a%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Self-paid"
+  },
+  {
+   "id": "avignon",
+   "place": "Avignon",
+   "country": "France",
+   "lat": 43.9493,
+   "lon": 4.8055,
+   "kind": "short",
+   "funder": "harness",
+   "status": "past",
+   "when": "Jun 2026",
+   "what": "2nd HARNESS Network Training Workshop",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%2345c08a%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232cae72%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by HARNESS"
+  },
+  {
+   "id": "rotterdam",
+   "place": "Rotterdam",
+   "country": "Netherlands",
+   "lat": 51.9244,
+   "lon": 4.4777,
+   "kind": "short",
+   "funder": "external",
+   "status": "past",
+   "when": "Jun 2026",
+   "what": "Erasmus Centre of Law and Digitalization Summer Research Camp",
+   "zoom": 300000,
+   "label": "d",
+   "label_max": 1200000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232f6fde%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%234b88f0%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by external bodies"
+  },
+  {
+   "id": "berlin",
+   "place": "Berlin",
+   "country": "Germany",
+   "lat": 52.52,
+   "lon": 13.405,
+   "kind": "short",
+   "funder": "external",
+   "status": "past",
+   "when": "Jun 2026",
+   "what": "Salzburg Global Seminar fellowship",
+   "funder_note": "Salzburg Global Seminar",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232f6fde%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%234b88f0%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by external bodies"
+  },
+  {
+   "id": "geneva",
+   "place": "Geneva",
+   "country": "Switzerland",
+   "lat": 46.2044,
+   "lon": 6.1432,
+   "kind": "short",
+   "funder": "external",
+   "status": "past",
+   "when": "6 to 10 Jul 2026",
+   "what": "Globethics residency and panel at the ITU AI for Good Global Summit",
+   "funder_note": "Globethics covered accommodation and programme fees",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232f6fde%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%234b88f0%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by external bodies"
+  },
+  {
+   "id": "barcelona",
+   "place": "Barcelona",
+   "country": "Spain",
+   "lat": 41.3874,
+   "lon": 2.1686,
+   "kind": "short",
+   "funder": "harness",
+   "status": "past",
+   "when": "Sep 2026",
+   "what": "Civic AI Workshop 3: Inclusive Finance and Banking (I-LINK project)",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%2345c08a%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232cae72%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by HARNESS"
+  },
+  {
+   "id": "leiden",
+   "place": "Leiden",
+   "country": "Netherlands",
+   "lat": 52.1601,
+   "lon": 4.497,
+   "kind": "short",
+   "funder": "external",
+   "status": "past",
+   "when": "Oct 2026",
+   "what": "LaborTrail, Tooling Showcase, Institute of Open Science Practices (IOSP) 2026",
+   "zoom": 300000,
+   "label": "u",
+   "label_max": 1200000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232f6fde%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%234b88f0%22%20stroke%3D%22%2314181e%22%20stroke-width%3D%222.5%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by external bodies"
+  },
+  {
+   "id": "salzburg",
+   "place": "Salzburg",
+   "country": "Austria",
+   "lat": 47.8095,
+   "lon": 13.055,
+   "kind": "short",
+   "funder": "external",
+   "status": "planned",
+   "when": "Nov 2026",
+   "what": "Salzburg Global Seminar fellowship, Public Policy New Voices Europe",
+   "funder_note": "Salzburg Global Seminar",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232f6fde%22%20fill-opacity%3D%220.22%22%20stroke%3D%22%232f6fde%22%20stroke-width%3D%222.5%22%20stroke-dasharray%3D%224%203%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%234b88f0%22%20fill-opacity%3D%220.22%22%20stroke%3D%22%234b88f0%22%20stroke-width%3D%222.5%22%20stroke-dasharray%3D%224%203%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by external bodies"
+  }
+ ]
+}

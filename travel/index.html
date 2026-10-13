@@ -1,0 +1,376 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>PhD Travel Globe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="cesium/Widgets/widgets.css">
+<style>
+  /* Layout: list panel on the left, globe on the right; stacked (globe first) on phones. */
+  :root {
+    --bg: #eef1f5;        /* page and space behind the globe */
+    --panel: #fbfbf8;
+    --ink: #1b2129;
+    --ink2: #4a5663;
+    --muted: #727e8b;
+    --line: #dde1e7;
+    --sel: #e9edf3;
+    --ocean: #d0d9e4;
+    --land: #fbfbf8;
+    --border: #b9c2cd;
+    --label: rgba(27, 33, 41, 1);
+    --halo: rgba(255, 255, 255, 0.92);
+    --key: #8c97a4;
+    --font: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    /* funder colours: written by the script from stays.json so map and list always match */
+    --c-self: #bd1f36;
+    --c-external: #2f6fde;
+    --c-harness: #45c08a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0f14; --panel: #151a21; --ink: #e8ebef; --ink2: #b4bdc8; --muted: #8a95a2;
+      --line: #28303a; --sel: #202934; --ocean: #131a22; --land: #27303b; --border: #3b4653;
+      --label: rgba(232, 235, 239, 1); --halo: rgba(16, 20, 26, 0.92); --key: #7f8b98;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0f14; --panel: #151a21; --ink: #e8ebef; --ink2: #b4bdc8; --muted: #8a95a2;
+    --line: #28303a; --sel: #202934; --ocean: #131a22; --land: #27303b; --border: #3b4653;
+    --label: rgba(232, 235, 239, 1); --halo: rgba(16, 20, 26, 0.92); --key: #7f8b98;
+    color-scheme: dark;
+  }
+
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 14px; line-height: 1.45; overflow: hidden; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .app { display: grid; grid-template-columns: minmax(320px, 400px) 1fr; height: 100%; }
+  .panel { background: var(--panel); border-right: 1px solid var(--line); overflow-y: auto; padding: 22px 20px 28px; min-width: 0; }
+  .stage { position: relative; min-width: 0; min-height: 0; background: var(--bg); }
+  #globe { position: absolute; inset: 0; }
+  #globe .cesium-viewer, #globe .cesium-viewer-cesiumWidgetContainer, #globe .cesium-widget, #globe canvas { width: 100%; height: 100%; }
+  .cesium-widget-credits { font-size: 10px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  h1 { font-size: 24px; line-height: 1.15; font-weight: 600; margin: 0 0 8px; text-wrap: balance; }
+  .stats { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; font-family: var(--mono); font-size: 12.5px; color: var(--ink2); }
+  .stats b { font-weight: 500; color: var(--ink); }
+
+  h2 { font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 8px; }
+  section { margin-top: 24px; }
+
+  /* legend */
+  .funders { display: flex; flex-direction: column; gap: 2px; margin: 0 -8px; }
+  .funder { display: grid; grid-template-columns: 14px 1fr auto; align-items: center; gap: 10px; padding: 6px 8px; border: 0; background: none; border-radius: 6px; cursor: pointer; text-align: left; }
+  .funder:hover { background: var(--sel); }
+  .funder .sw { width: 14px; height: 14px; border-radius: 3px; background: var(--fc); }
+  .funder .n { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .funder[aria-pressed="false"] { opacity: 0.45; }
+  .funder[aria-pressed="false"] .sw { background: transparent; box-shadow: inset 0 0 0 2px var(--fc); }
+  .hint { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+
+  .key { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 4px; color: var(--ink2); font-size: 12.5px; }
+  .key .grp { display: flex; align-items: center; gap: 10px; }
+  .key .circ { display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .key .circ i { display: block; border-radius: 50%; background: var(--key); opacity: 0.8; }
+  .key .sq { display: inline-block; width: 15px; height: 15px; border-radius: 2px; background: var(--key); vertical-align: -3px; margin-right: 6px; }
+  .key .sq.dash { background: transparent; box-shadow: none; border: 2px dashed var(--key); width: 15px; height: 15px; }
+  .key .circ-row { display: flex; align-items: flex-end; gap: 12px; }
+
+  /* list */
+  ul { list-style: none; margin: 0 -8px; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .row { display: grid; grid-template-columns: 16px 1fr; gap: 0 10px; width: 100%; padding: 9px 8px; border: 0; border-radius: 6px; background: none; text-align: left; cursor: pointer; }
+  .row:hover { background: var(--sel); }
+  .row.is-selected { background: var(--sel); box-shadow: inset 3px 0 0 var(--fc); }
+  .glyph { width: 13px; height: 13px; margin-top: 3px; background: var(--fc); }
+  .glyph.circle { border-radius: 50%; }
+  .glyph.square { border-radius: 2px; }
+  .glyph.planned { background: transparent; border: 2px dashed var(--fc); }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; min-width: 0; }
+  .place { font-weight: 600; }
+  .when { font-family: var(--mono); font-size: 12px; color: var(--ink2); white-space: nowrap; }
+  .what { color: var(--ink2); font-size: 13px; margin-top: 1px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 3px; font-size: 12px; color: var(--muted); }
+  .chip { border: 1px solid var(--muted); border-radius: 99px; padding: 0 7px; font-size: 11px; line-height: 17px; }
+  .row[hidden] { display: none; }
+
+  /* map overlay */
+  .views { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; z-index: 3; }
+  .views button { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: 13px; }
+  .views button:hover { background: var(--sel); }
+  .tip { position: absolute; z-index: 4; pointer-events: none; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; font-size: 12.5px; max-width: 260px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+  .tip b { display: block; font-weight: 600; }
+  .tip span { color: var(--ink2); display: block; }
+  .tip i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--fc); }
+  .status { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); z-index: 2; background: var(--bg); }
+  .status[hidden] { display: none; }
+  .credit { position: absolute; right: 10px; bottom: 26px; z-index: 3; font-size: 10px; color: var(--muted); }
+
+  @media (max-width: 760px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: minmax(300px, 52%) 1fr; }
+    .stage { order: -1; }
+    .panel { border-right: 0; border-top: 1px solid var(--line); padding: 18px 16px 28px; }
+    h1 { font-size: 21px; }
+  }
+</style>
+
+<div class="app">
+  <aside class="panel" aria-label="Stays">
+    <p class="eyebrow">HARNESS doctoral fellowship, 2025 to now</p>
+    <h1>Where the PhD has taken me</h1>
+    <p class="stats" id="stats"></p>
+
+    <section aria-labelledby="h-funder">
+      <h2 id="h-funder">Who paid</h2>
+      <div class="funders" id="funders" role="group" aria-label="Filter by funder"></div>
+      <p class="hint">Select a funder to hide or show its stays.</p>
+    </section>
+
+    <section aria-labelledby="h-key">
+      <h2 id="h-key">Stay type</h2>
+      <div class="key" id="key"></div>
+    </section>
+
+    <section aria-labelledby="h-long">
+      <h2 id="h-long">Long stays</h2>
+      <ul id="list-long"></ul>
+    </section>
+
+    <section aria-labelledby="h-short">
+      <h2 id="h-short">Short stays</h2>
+      <ul id="list-short"></ul>
+    </section>
+  </aside>
+
+  <main class="stage">
+    <div id="globe" role="img" aria-label="Globe with markers for each place visited during the PhD. The same stays are listed in the panel."></div>
+    <div class="views" role="group" aria-label="Camera">
+      <button type="button" id="v-world">World</button>
+      <button type="button" id="v-europe">Europe</button>
+    </div>
+    <div class="tip" id="tip" hidden></div>
+    <div class="credit">Boundaries: Natural Earth</div>
+    <div class="status" id="status">Loading map…</div>
+  </main>
+</div>
+
+<script>window.CESIUM_BASE_URL = "cesium/";</script>
+<script src="cesium/Cesium.js"></script>
+<script>
+(async function () {
+  const root = document.documentElement;
+  const mq = matchMedia("(prefers-color-scheme: dark)");
+  const theme = () => root.dataset.theme === "dark" ? "dark" : root.dataset.theme === "light" ? "light" : (mq.matches ? "dark" : "light");
+
+  const [data, countries] = await Promise.all([
+    fetch("stays.json").then(r => r.json()),
+    fetch("countries.geojson").then(r => r.json())
+  ]);
+  const stays = data.stays, funders = data.funders, meta = data.meta;
+  const byId = Object.fromEntries(stays.map(s => [s.id, s]));
+
+  /* ---------- globe ---------- */
+  const viewer = new Cesium.Viewer("globe", {
+    baseLayer: false, animation: false, timeline: false, baseLayerPicker: false, geocoder: false,
+    homeButton: false, infoBox: false, sceneModePicker: false, selectionIndicator: false,
+    navigationHelpButton: false, fullscreenButton: false, skyBox: false, skyAtmosphere: false,
+    requestRenderMode: true, maximumRenderTimeChange: Infinity, msaaSamples: 4
+  });
+  const scene = viewer.scene;
+  scene.globe.showGroundAtmosphere = false;
+  scene.globe.enableLighting = false;
+  scene.fog.enabled = false;
+  if (scene.sun) scene.sun.show = false;
+  if (scene.moon) scene.moon.show = false;
+  scene.screenSpaceCameraController.minimumZoomDistance = 60000;
+  scene.screenSpaceCameraController.maximumZoomDistance = 4.2e7;
+
+  /* Basemap: country polygons as two flat-coloured primitives (fill and borders), so the sun
+     never shades the land and the colours can follow the page theme. */
+  const toCart = ring => Cesium.Cartesian3.fromDegreesArray(ring.slice(0, -1).flat());
+  const toCartH = ring => Cesium.Cartesian3.fromDegreesArrayHeights(ring.slice(0, -1).flatMap(p => [p[0], p[1], 800]));
+  const fillInst = [], lineInst = [];
+  for (const f of countries.features) {
+    const g = f.geometry;
+    const parts = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+    for (const rings of parts) {
+      const hierarchy = new Cesium.PolygonHierarchy(toCart(rings[0]), rings.slice(1).map(r => new Cesium.PolygonHierarchy(toCart(r))));
+      fillInst.push(new Cesium.GeometryInstance({ geometry: new Cesium.PolygonGeometry({
+        polygonHierarchy: hierarchy, height: 300,
+        vertexFormat: Cesium.MaterialAppearance.MaterialSupport.BASIC.vertexFormat }) }));
+      for (const r of rings) {
+        lineInst.push(new Cesium.GeometryInstance({ geometry: new Cesium.PolylineGeometry({
+          positions: toCartH(r), width: 1,
+          vertexFormat: Cesium.PolylineMaterialAppearance.VERTEX_FORMAT }) }));
+      }
+    }
+  }
+  const fillApp = new Cesium.MaterialAppearance({
+    material: Cesium.Material.fromType("Color", { color: Cesium.Color.WHITE }),
+    materialSupport: Cesium.MaterialAppearance.MaterialSupport.BASIC, flat: true, translucent: false, faceForward: false });
+  const lineApp = new Cesium.PolylineMaterialAppearance({ material: Cesium.Material.fromType("Color", { color: Cesium.Color.GRAY }) });
+  const landFill = scene.primitives.add(new Cesium.Primitive({ geometryInstances: fillInst, appearance: fillApp, asynchronous: true, allowPicking: false, releaseGeometryInstances: true }));
+  const landLines = scene.primitives.add(new Cesium.Primitive({ geometryInstances: lineInst, appearance: lineApp, asynchronous: true, allowPicking: false, releaseGeometryInstances: true }));
+  const ds = await Cesium.CzmlDataSource.load("stays.czml");
+  await viewer.dataSources.add(ds);
+
+  /* ---------- panel ---------- */
+  const $ = id => document.getElementById(id);
+  $("stats").innerHTML = `<span><b>${meta.stays}</b> stays</span><span><b>${meta.places}</b> places</span><span><b>${meta.countries}</b> countries</span>`;
+
+  const hidden = new Set();
+  const fbox = $("funders");
+  Object.keys(funders).forEach(k => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "funder"; b.dataset.k = k; b.setAttribute("aria-pressed", "true");
+    b.style.setProperty("--fc", `var(--c-${k})`);
+    b.innerHTML = `<span class="sw"></span><span>${funders[k].label}</span><span class="n">${meta.counts[k]}</span>`;
+    b.addEventListener("click", () => {
+      hidden.has(k) ? hidden.delete(k) : hidden.add(k);
+      b.setAttribute("aria-pressed", String(!hidden.has(k)));
+      refreshVisibility();
+    });
+    fbox.appendChild(b);
+  });
+
+  const key = $("key");
+  const sizes = meta.circle_key;
+  key.innerHTML =
+    `<div class="grp"><div class="circ-row">${sizes.map(c =>
+      `<div class="circ"><i style="width:${c.d}px;height:${c.d}px"></i>${c.months} mo</div>`).join("")}</div>
+      <span>Long stay, area shows length</span></div>
+     <div><span class="sq"></span>Short stay</div>
+     <div><span class="sq dash"></span>Planned</div>`;
+
+  const rows = {};
+  function addRow(s) {
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "row"; b.dataset.id = s.id;
+    b.style.setProperty("--fc", `var(--c-${s.funder})`);
+    const note = s.funder_note ? ` · ${s.funder_note}` : "";
+    b.innerHTML =
+      `<span class="glyph ${s.kind === "long" ? "circle" : "square"}${s.status === "planned" ? " planned" : ""}"></span>
+       <span>
+         <span class="head"><span class="place">${s.place}</span><span class="when">${s.when}</span></span>
+         <span class="what" style="display:block">${s.what}</span>
+         <span class="meta"><span>${s.funder_label}${s.funder_note ? "" : ""}</span>${s.status === "planned" ? '<span class="chip">Planned</span>' : ""}${s.kind === "long" ? `<span>${s.months} months</span>` : ""}</span>
+         ${s.funder_note ? `<span class="meta"><span>${s.funder_note}</span></span>` : ""}
+       </span>`;
+    b.addEventListener("click", () => select(s.id, { fly: true }));
+    li.appendChild(b);
+    $(s.kind === "long" ? "list-long" : "list-short").appendChild(li);
+    rows[s.id] = { li, b };
+  }
+  stays.forEach(addRow);
+
+  /* ---------- behaviour ---------- */
+  let selected = null;
+  function select(id, opts = {}) {
+    selected = id;
+    Object.entries(rows).forEach(([k, r]) => r.b.classList.toggle("is-selected", k === id));
+    stays.forEach(s => { const e = ds.entities.getById(s.id); if (e) e.billboard.scale = s.id === id ? 1.25 : 1; });
+    if (rows[id]) rows[id].b.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (opts.fly) {
+      const s = byId[id];
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(s.lon, s.lat, s.zoom),
+        orientation: { heading: 0, pitch: -Math.PI / 2, roll: 0 }, duration: 1.6
+      });
+    }
+    scene.requestRender();
+  }
+
+  function refreshVisibility() {
+    stays.forEach(s => { rows[s.id].li.hidden = hidden.has(s.funder); });
+    scene.requestRender();
+  }
+
+  /* Markers are drawn without depth testing, so hide the ones on the far side of the globe. */
+  const occluder = new Cesium.EllipsoidalOccluder(Cesium.Ellipsoid.WGS84, viewer.camera.positionWC);
+  const anchors = Object.fromEntries(stays.map(s => [s.id, Cesium.Cartesian3.fromDegrees(s.lon, s.lat, 0)]));
+  scene.preRender.addEventListener(() => {
+    occluder.cameraPosition = viewer.camera.positionWC;
+    stays.forEach(s => {
+      const e = ds.entities.getById(s.id);
+      if (e) e.show = !hidden.has(s.funder) && occluder.isPointVisible(anchors[s.id]);
+    });
+  });
+
+  function applyTheme() {
+    const t = theme();
+    const cs = getComputedStyle(root);
+    const col = n => Cesium.Color.fromCssColorString(cs.getPropertyValue(n).trim());
+    Object.keys(funders).forEach(k => root.style.setProperty(`--c-${k}`, funders[k][t]));
+    // read the (possibly just changed) tokens after the browser has applied them
+    const cs2 = getComputedStyle(root);
+    const c2 = n => Cesium.Color.fromCssColorString(cs2.getPropertyValue(n).trim());
+    scene.globe.baseColor = c2("--ocean");
+    scene.backgroundColor = c2("--bg");
+    fillApp.material.uniforms.color = c2("--land");
+    lineApp.material.uniforms.color = c2("--border");
+    stays.forEach(s => {
+      const e = ds.entities.getById(s.id);
+      if (!e) return;
+      e.billboard.image = s.imgs[t];
+      if (e.label) { e.label.fillColor = c2("--label"); e.label.outlineColor = c2("--halo"); }
+    });
+    scene.requestRender();
+  }
+  applyTheme();
+  mq.addEventListener("change", applyTheme);
+  new MutationObserver(applyTheme).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+  /* camera presets */
+  const portrait = () => viewer.canvas.clientWidth / viewer.canvas.clientHeight < 1.05;
+  function go(lon, lat, h, fly) {
+    const dest = Cesium.Cartesian3.fromDegrees(lon, lat, h);
+    const orientation = { heading: 0, pitch: -Math.PI / 2, roll: 0 };
+    fly ? viewer.camera.flyTo({ destination: dest, orientation, duration: 1.8 }) : viewer.camera.setView({ destination: dest, orientation });
+  }
+  const world = fly => go(-40, 36, portrait() ? 1.1e7 : 1.2e7, fly);
+  const europe = fly => go(7, 46, portrait() ? 5.2e6 : 3.4e6, fly);
+  world(false);
+  $("v-world").addEventListener("click", () => world(true));
+  $("v-europe").addEventListener("click", () => europe(true));
+
+  /* picking and hover */
+  const tip = $("tip");
+  const handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
+  const stayAt = pos => { const p = scene.pick(pos); return p && p.id && byId[p.id.id] ? byId[p.id.id] : null; };
+  handler.setInputAction(c => { const s = stayAt(c.position); if (s) select(s.id); }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+  handler.setInputAction(m => {
+    const s = stayAt(m.endPosition);
+    viewer.canvas.style.cursor = s ? "pointer" : "";
+    if (!s) { tip.hidden = true; return; }
+    tip.style.setProperty("--fc", `var(--c-${s.funder})`);
+    tip.innerHTML = `<b>${s.place}, ${s.when}</b><span>${s.what}</span><span><i></i>${s.funder_label}${s.status === "planned" ? " · planned" : ""}</span>`;
+    tip.hidden = false;
+    const box = viewer.canvas.getBoundingClientRect();
+    const x = Math.min(m.endPosition.x + 14, box.width - 270), y = Math.max(8, m.endPosition.y - 10);
+    tip.style.left = Math.max(8, x) + "px"; tip.style.top = y + "px";
+  }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+  viewer.canvas.addEventListener("mouseleave", () => { tip.hidden = true; });
+
+  window.addEventListener("resize", () => scene.requestRender());
+  scene.requestRender();
+  // geometry is built in web workers; keep rendering until it is ready, then drop the loading note
+  let landReady = false;
+  scene.postRender.addEventListener(() => {
+    if (landFill.ready && landLines.ready) {
+      if (!landReady) { landReady = true; $("status").hidden = true; window.__landReady = true; }
+    } else scene.requestRender();
+  });
+  window.__map = { viewer, ds, select, go, world, europe };   // handy in the browser console
+})().catch(err => {
+  console.error(err);
+  const s = document.getElementById("status");
+  if (s) { s.hidden = false; s.textContent = "The map could not load. Check the console for details."; }
+});
+</script>
+
+</body></html>
