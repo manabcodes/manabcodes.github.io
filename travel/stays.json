@@ -21,13 +21,13 @@
   "dark": "#14181e"
  },
  "meta": {
-  "stays": 19,
-  "places": 18,
+  "stays": 20,
+  "places": 19,
   "countries": 12,
   "counts": {
    "self": 4,
    "external": 7,
-   "harness": 8
+   "harness": 9
   },
   "square": 15,
   "circle_key": [
@@ -351,6 +351,26 @@
    },
    "size": 23,
    "funder_label": "Paid by external bodies"
+  },
+  {
+   "id": "bari",
+   "place": "Bari",
+   "country": "Italy",
+   "lat": 41.1171,
+   "lon": 16.8719,
+   "kind": "short",
+   "funder": "harness",
+   "status": "planned",
+   "when": "Oct 2026",
+   "what": "Presenting at ISWC 2026",
+   "funder_note": "ISWC Student Grant/HARNESS",
+   "zoom": 600000,
+   "imgs": {
+    "light": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%2345c08a%22%20fill-opacity%3D%220.22%22%20stroke%3D%22%2345c08a%22%20stroke-width%3D%222.5%22%20stroke-dasharray%3D%224%203%22/%3E%3C/svg%3E",
+    "dark": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%20fill%3D%22%232cae72%22%20fill-opacity%3D%220.22%22%20stroke%3D%22%232cae72%22%20stroke-width%3D%222.5%22%20stroke-dasharray%3D%224%203%22/%3E%3C/svg%3E"
+   },
+   "size": 23,
+   "funder_label": "Paid by HARNESS"
   },
   {
    "id": "salzburg",
