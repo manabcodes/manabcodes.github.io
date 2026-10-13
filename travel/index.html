@@ -102,6 +102,12 @@
   .views { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; z-index: 3; }
   .views button { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: 13px; }
   .views button:hover { background: var(--sel); }
+  .views button.icon { display: grid; place-items: center; padding: 5px 9px; }
+  .views button.icon.busy svg { animation: pulse 0.9s ease-in-out infinite; }
+  .views button.icon.on { color: #7a4dff; }
+  @keyframes pulse { 50% { opacity: 0.3; } }
+  @media (prefers-reduced-motion: reduce) { .views button.icon.busy svg { animation: none; opacity: 0.5; } }
+  .key .me { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #7a4dff; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--muted); vertical-align: -3px; margin-right: 7px; }
   .tip { position: absolute; z-index: 4; pointer-events: none; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; font-size: 12.5px; max-width: 260px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
   .tip b { display: block; font-weight: 600; }
   .tip span { color: var(--ink2); display: block; }
@@ -151,6 +157,9 @@
     <div class="views" role="group" aria-label="Camera">
       <button type="button" id="v-world">World</button>
       <button type="button" id="v-europe">Europe</button>
+      <button type="button" id="v-me" class="icon" aria-label="Show my location" title="Show my location">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>
+      </button>
     </div>
     <div class="tip" id="tip" hidden></div>
     <div class="credit">Boundaries: Natural Earth</div>
@@ -244,7 +253,8 @@
       `<div class="circ"><i style="width:${c.d}px;height:${c.d}px"></i>${c.months} mo</div>`).join("")}</div>
       <span>Long stay, area shows length</span></div>
      <div><span class="sq"></span>Short stay</div>
-     <div><span class="sq dash"></span>Planned</div>`;
+     <div><span class="sq dash"></span>Planned</div>
+     <div id="key-me" hidden><span class="me"></span>Your location</div>`;
 
   const rows = {};
   function addRow(s) {
@@ -337,6 +347,35 @@
   world(false);
   $("v-world").addEventListener("click", () => world(true));
   $("v-europe").addEventListener("click", () => europe(true));
+
+  /* "My location": fly to the visitor and drop a small purple dot. The position stays in the browser. */
+  let mePos = null, meDot = null, meTimer = null;
+  scene.preRender.addEventListener(() => { if (meDot) meDot.show = occluder.isPointVisible(mePos); });
+  function meNote(text) {
+    tip.innerHTML = text; tip.hidden = false;
+    tip.style.left = "12px"; tip.style.top = "56px";
+    clearTimeout(meTimer); meTimer = setTimeout(() => { tip.hidden = true; }, 3500);
+  }
+  $("v-me").addEventListener("click", () => {
+    const btn = $("v-me");
+    if (!navigator.geolocation) { meNote("This browser can't share a location."); return; }
+    btn.classList.add("busy");
+    navigator.geolocation.getCurrentPosition(pos => {
+      const { latitude: lat, longitude: lon } = pos.coords;
+      mePos = Cesium.Cartesian3.fromDegrees(lon, lat, 0);
+      if (!meDot) {
+        meDot = viewer.entities.add({ position: mePos, point: { pixelSize: 13,
+          color: Cesium.Color.fromCssColorString("#7a4dff"), outlineColor: Cesium.Color.WHITE,
+          outlineWidth: 3, disableDepthTestDistance: 1e10 } });
+      } else meDot.position = mePos;
+      btn.classList.remove("busy"); btn.classList.add("on");
+      $("key-me").hidden = false;
+      go(lon, lat, 1.5e6, true);
+    }, () => {
+      btn.classList.remove("busy");
+      meNote("Location is blocked. Allow it for this site in your browser settings, then try again.");
+    }, { timeout: 10000, maximumAge: 60000 });
+  });
 
   /* picking and hover */
   const tip = $("tip");
